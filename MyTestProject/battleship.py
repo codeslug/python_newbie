@@ -32,7 +32,7 @@ def random_row(board):
 
 def random_col(board):
     return randint(0, len(board[0]) - 1)
-# creates random coords for the ship
+# creates random coords for the ship.
 
 ship_row = random_row(board)
 ship_col = random_col(board)
