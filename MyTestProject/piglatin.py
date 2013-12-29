@@ -31,7 +31,7 @@ if len(original) > 0 and original.isalpha(): #check name validity
         if (last == "a") or (last == "e") or (last == "i") or (last == "o") or (last == "u"): #checks vowel
             new_word = word[1:(len(word))] + (word[0]) + pyg #assembles pyg word for consonant, single letter
         else:
-# still debugging            
+# still debugging !!            
             print "consonant"
                     
         print new_word
