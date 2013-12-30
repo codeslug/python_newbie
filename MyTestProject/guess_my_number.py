@@ -39,6 +39,8 @@ else:
 """
 Improving - 
 - Debug for when the number entered is not a number.
+- larger range for number guessed.
+- give hints on whether guessed number is too high or too low.
 
 
 """
