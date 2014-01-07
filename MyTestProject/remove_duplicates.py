@@ -11,16 +11,14 @@ duplicate entries removed.
 
 def remove_duplicates(my_list):    
     new_list = []
-    if len(my_list) != 0:
+    if len(my_list) != 0: # error handling empty lists
         new_list.append(my_list[0]) # initializes first item, for debugging reasons. unless list is empty
-    for count in range(len(my_list)):
-        if len(my_list) == 0: # error handling empty lists
-            break
-        for inner in range(len(new_list)):
-            if (my_list[count] == new_list[inner]):
-                break # match found, no copy to be made
-            elif (inner == len(new_list)-1):
-                new_list.append(my_list[count]) # reached end of new_list with no matches -> add to new_list
+        for count in range(len(my_list)):
+            for inner in range(len(new_list)):
+                if (my_list[count] == new_list[inner]):
+                    break # match found, no copy to be made
+                elif (inner == len(new_list)-1):
+                    new_list.append(my_list[count]) # reached end of new_list with no matches -> add to new_list
     return new_list
 
 things_i_like = ["snails", "cellos", "slugs", "the night", "slugs", "cellos", "bikes"]
