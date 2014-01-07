@@ -6,7 +6,7 @@ Created on Jan 7, 2014
 Written for codeacedmoy exercise. 
 
 Object: write a function which takes a single list as input, and returns a copy of that list with 
-duplicate entries removed. 
+duplicate entries removed.   
 '''
 
 def remove_duplicates(my_list):    
