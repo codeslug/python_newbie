@@ -58,8 +58,8 @@ class Shelf(object):
 #        print str(title), "has been added to the shelf."
 # maybe add this code back -- if library passes books to empty shelves??
     
-    def listBooks(self):
-        print "This shelf contains: " + ", ".join(self.items_on_shelf)
+#    def listBooks(self):
+#        print "This shelf contains: " + ", ".join(self.items_on_shelf)
     
 #    def removeBooks (self, title):
 #        self.items_on_shelf.remove(title)
@@ -69,9 +69,6 @@ class Book(object):
         self.title = title
         # self.author = author
         # self.genre = genre
-    
-    def unshelf(self):
-        library1.unshelf(self.title)
         
     def addBook(self):
         my_library.addBook(self.title)
