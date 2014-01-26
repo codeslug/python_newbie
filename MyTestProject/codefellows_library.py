@@ -15,8 +15,6 @@ at the bottom showing it works) is all that is needed. In addition to pushing th
 account, please also setup a http://repl.it/languages/Python(so it runs there) and enter the saved URL here.
 '''
 
-
-
 class Library(object):
     shelves = [] # maintains list of all shelves
     topics = [] # this doesnt do anything atm
@@ -28,41 +26,27 @@ class Library(object):
         self.shelves.append(shelf) # adds live shelf to library's shelves list
     
     def listBooks(self):
-        print "shelves = ", self.shelves
-        # print "shelf names are: ", self.shelves[self.genre]
         for count in self.shelves:
-            print count.items_on_shelf
+            print "\n".join(count.items_on_shelf)
     
-    def addBook(self, title):
-        shelf1.items_on_shelf.append(title)
-        shelf1.items_on_shelf.sort() #re-alphabetizes list
+    def addBook(self, title, shelf):
+        shelf.items_on_shelf.append(title)
+        shelf.items_on_shelf.sort() #re-alphabetizes list
         print str(title), "has been added to the library."
         
     def getGenre(self):
         pass
     
-    def removeBook(self, title):
-        shelf1.items_on_shelf.remove(title)
-        print title, " has been removed from the Library."
-        
+    def removeBook(self, title, shelf):
+        shelf.items_on_shelf.remove(title)
+        print title, "has been removed from the Library."
 
 
 class Shelf(object):
-    items_on_shelf = [] #keeps list of book titles for each shelf
     def __init__(self, genre):
         self.genre = genre
-    
-#    def add_book (self, title):
-#        self.items_on_shelf.append(title)
-#        self.items_on_shelf.sort() #re-alphabetizes list
-#        print str(title), "has been added to the shelf."
-# maybe add this code back -- if library passes books to empty shelves??
-    
-#    def listBooks(self):
-#        print "This shelf contains: " + ", ".join(self.items_on_shelf)
-    
-#    def removeBooks (self, title):
-#        self.items_on_shelf.remove(title)
+        self.items_on_shelf = []    # keeps list of book titles for each shelf
+
 
 class Book(object):
     def __init__(self, title):
@@ -70,37 +54,52 @@ class Book(object):
         # self.author = author
         # self.genre = genre
         
-    def addBook(self):
-        my_library.addBook(self.title)
+    def addBook(self, shelf):
+        my_library.addBook(self.title, shelf)
     
-    def removeBook (self):
-        my_library.removeBook(self.title)
+    def removeBook (self, shelf):
+        my_library.removeBook(self.title, shelf)   # better to just remove the book flat out without searching for its shelf?
+
 
 # CREATE SOME OBJECTS
 my_library = Library("My Library")
 
+programming = Shelf("Programming Shelf")
+biology = Shelf("Biology")
+fiction = Shelf("Fiction")
+
 book1 = Book("Crime and Punishment")
 book2 = Book("Secret World of Slugs and Snails")
-
-shelf1 = Shelf("Programming Shelf")
-shelf2 = Shelf("Biology")
-shelf3 = Shelf("Fiction")
+book3 = Book("Watership Down")
+book4 = Book("How to Learn Python the Hard Way")
+book5 = Book("Pride & Prejudice")
 
 # REGISTER THE SHELVES WITH THE LIBRARY
-my_library.addShelf(shelf1)
-my_library.addShelf(shelf2)
-my_library.addShelf(shelf3)
+my_library.addShelf(programming)
+my_library.addShelf(biology)
+my_library.addShelf(fiction)
 
+# ADD BOOKS TO THE LIBRARY
+book1.addBook(fiction)
+book2.addBook(biology)
+book3.addBook(fiction)
+book4.addBook(programming)
+book5.addBook(fiction)
+print "\n"
 
-# book1.printTitle() # debugging
+# PRINT SHELF CONTENTS
+print "Biology Shelf:", ", ".join(biology.items_on_shelf)
+print "Programming Shelf:", ", ".join(programming.items_on_shelf)
+print "Fiction Shelf:", ", ".join(fiction.items_on_shelf)
+print programming.genre, "contains this many books:", str(len(programming.items_on_shelf))
 
+# REMOVE BOOKS FROM LIBRARY
+print "\n"
+book4.removeBook(programming)
 
-# shelf1.add_book(book1.title)
-# shelf1.list_books()
-# print shelf1.genre, "contains this many books:", str(len(shelf1.items_on_shelf))
-
-book1.addBook()
-book2.addBook()
+# PRINT LIBRARY CONTENTS
+print "\n"
+print "The library contains ..."
 my_library.listBooks()
 
 # WORKING CODE
@@ -108,20 +107,5 @@ my_library.listBooks()
 # book1.removeBook() # working code
 # print shelf1.genre, "contains this many books:", str(len(shelf1.items_on_shelf))
 
-print
-print
-my_library.listBooks()
-
-
-print "Shelf 1:", shelf1.items_on_shelf
-print "Shelf 2:", shelf2.items_on_shelf
-print "Shelf 3", shelf3.items_on_shelf
-
-# BUGGED print "Library list", my_library.shelves.genre
-
-
-
-
-print
-print
-print "not bugged... yet"
+print "\n \n \n \n"
+print "end of program"
