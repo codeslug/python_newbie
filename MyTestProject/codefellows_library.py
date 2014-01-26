@@ -19,7 +19,7 @@ account, please also setup a http://repl.it/languages/Python(so it runs there) a
 
 class Library(object):
     shelves = [] # maintains list of all shelves
-    topics = []
+    topics = [] # this doesnt do anything atm
     
     def __init__(self, name):
         self.name = name
@@ -45,8 +45,6 @@ class Library(object):
         shelf1.items_on_shelf.remove(title)
         print title, " has been removed from the Library."
         
-
-my_library = Library("My Library")
 
 
 class Shelf(object):
@@ -81,6 +79,9 @@ class Book(object):
     def removeBook (self):
         my_library.removeBook(self.title)
 
+# CREATE SOME OBJECTS
+my_library = Library("My Library")
+
 book1 = Book("Crime and Punishment")
 book2 = Book("Secret World of Slugs and Snails")
 
@@ -88,9 +89,11 @@ shelf1 = Shelf("Programming Shelf")
 shelf2 = Shelf("Biology")
 shelf3 = Shelf("Fiction")
 
+# REGISTER THE SHELVES WITH THE LIBRARY
 my_library.addShelf(shelf1)
 my_library.addShelf(shelf2)
 my_library.addShelf(shelf3)
+
 
 # book1.printTitle() # debugging
 
@@ -103,7 +106,7 @@ book1.addBook()
 book2.addBook()
 my_library.listBooks()
 
-# WORKIGN CODE
+# WORKING CODE
 # print shelf1.genre, "contains this many books:", str(len(shelf1.items_on_shelf))
 # book1.removeBook() # working code
 # print shelf1.genre, "contains this many books:", str(len(shelf1.items_on_shelf))
@@ -111,6 +114,16 @@ my_library.listBooks()
 print
 print
 my_library.listBooks()
+
+
+print "Shelf 1:", shelf1.items_on_shelf
+print "Shelf 2:", shelf2.items_on_shelf
+print "Shelf 3", shelf3.items_on_shelf
+
+# BUGGED print "Library list", my_library.shelves.genre
+
+
+
 
 print
 print
