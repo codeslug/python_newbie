@@ -22,20 +22,17 @@ class Library(object):
         self.shelves.append(shelf) # adds shelf instance to library's shelves list
     
     def listBooks(self):
-        for count in self.shelves: # iterates through the library's master list of shelves
-            print "\n".join(count.items_on_shelf) # fetches list of books from Shelf instance, formats & prints to newline
+        for shelf in self.shelves: # iterates through the library's master list of shelves
+            print "\n".join(shelf.items_on_shelf) # fetches list of books from Shelf instance, formats & prints to newline
     
     def addBook(self, title, shelf):
         shelf.items_on_shelf.append(title) # adds book to a specified shelf instance
         shelf.items_on_shelf.sort() # re-alphabetizes list
-        print str(title), "has been added to the Library." # prints result for transparency
-        
-    def getGenre(self): # feature to be added later
-        pass
+        print str(title), "has been added to the Library."
     
     def removeBook(self, title, shelf):
         shelf.items_on_shelf.remove(title) # removes Book instance from specified Shelf instance
-        print title, "has been removed from the Library." # prints result for transparency
+        print title, "has been removed from the Library."
 
 
 class Shelf(object):
