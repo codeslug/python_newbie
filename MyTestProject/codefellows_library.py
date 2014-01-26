@@ -23,7 +23,7 @@ class Library(object):
     
     def listBooks(self):
         for count in self.shelves: # iterates through the library's master list of shelves
-            print "\n".join(count.items_on_shelf) # fetches the list of books from the Shelf instance, formats and prints titles to newline
+            print "\n".join(count.items_on_shelf) # fetches list of books from Shelf instance, formats & prints to newline
     
     def addBook(self, title, shelf):
         shelf.items_on_shelf.append(title) # adds book to a specified shelf instance
