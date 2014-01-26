@@ -17,56 +17,50 @@ account, please also setup a http://repl.it/languages/Python(so it runs there) a
 
 class Library(object):
     shelves = [] # maintains list of all shelves
-    topics = [] # this doesnt do anything atm
-    
-    def __init__(self, name):
-        self.name = name
         
     def addShelf (self, shelf):
-        self.shelves.append(shelf) # adds live shelf to library's shelves list
+        self.shelves.append(shelf) # adds shelf instance to library's shelves list
     
     def listBooks(self):
-        for count in self.shelves:
-            print "\n".join(count.items_on_shelf)
+        for count in self.shelves: # iterates through the library's master list of shelves
+            print "\n".join(count.items_on_shelf) # fetches the list of books from the Shelf instance, formats and prints titles to newline
     
     def addBook(self, title, shelf):
-        shelf.items_on_shelf.append(title)
-        shelf.items_on_shelf.sort() #re-alphabetizes list
-        print str(title), "has been added to the library."
+        shelf.items_on_shelf.append(title) # adds book to a specified shelf instance
+        shelf.items_on_shelf.sort() # re-alphabetizes list
+        print str(title), "has been added to the Library." # prints result for transparency
         
-    def getGenre(self):
+    def getGenre(self): # feature to be added later
         pass
     
     def removeBook(self, title, shelf):
-        shelf.items_on_shelf.remove(title)
-        print title, "has been removed from the Library."
+        shelf.items_on_shelf.remove(title) # removes Book instance from specified Shelf instance
+        print title, "has been removed from the Library." # prints result for transparency
 
 
 class Shelf(object):
     def __init__(self, genre):
         self.genre = genre
-        self.items_on_shelf = []    # keeps list of book titles for each shelf
+        self.items_on_shelf = []    # keeps list of book titles for each shelf instance
 
 
 class Book(object):
     def __init__(self, title):
         self.title = title
-        # self.author = author
-        # self.genre = genre
         
     def addBook(self, shelf):
-        my_library.addBook(self.title, shelf)
+        my_library.addBook(self.title, shelf) # contacts the library to add the book
     
     def removeBook (self, shelf):
-        my_library.removeBook(self.title, shelf)   # better to just remove the book flat out without searching for its shelf?
+        my_library.removeBook(self.title, shelf)   # contacts the library to remove the book
 
 
 # CREATE SOME OBJECTS
-my_library = Library("My Library")
+my_library = Library()
 
 programming = Shelf("Programming Shelf")
-biology = Shelf("Biology")
-fiction = Shelf("Fiction")
+biology = Shelf("Biology Shelf")
+fiction = Shelf("Fiction Shelf")
 
 book1 = Book("Crime and Punishment")
 book2 = Book("Secret World of Slugs and Snails")
@@ -85,7 +79,7 @@ book2.addBook(biology)
 book3.addBook(fiction)
 book4.addBook(programming)
 book5.addBook(fiction)
-print "\n"
+print "\n" # formatting
 
 # PRINT SHELF CONTENTS
 print "Biology Shelf:", ", ".join(biology.items_on_shelf)
@@ -94,18 +88,13 @@ print "Fiction Shelf:", ", ".join(fiction.items_on_shelf)
 print programming.genre, "contains this many books:", str(len(programming.items_on_shelf))
 
 # REMOVE BOOKS FROM LIBRARY
-print "\n"
+print "\n" # formatting
 book4.removeBook(programming)
 
 # PRINT LIBRARY CONTENTS
-print "\n"
-print "The library contains ..."
+print "\n" # formatting
+print "The Library contains ..."
 my_library.listBooks()
 
-# WORKING CODE
-# print shelf1.genre, "contains this many books:", str(len(shelf1.items_on_shelf))
-# book1.removeBook() # working code
-# print shelf1.genre, "contains this many books:", str(len(shelf1.items_on_shelf))
-
 print "\n \n \n \n"
-print "end of program"
+print "end of program" # reach program end without crashing
