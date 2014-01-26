@@ -22,23 +22,30 @@ class Library(object):
         self.shelves.append(shelf) # adds shelf instance to library's shelves list
     
     def listBooks(self):
+        print "Welcome to Library! Today we have in stock the following titles:"
         for shelf in self.shelves: # iterates through the library's master list of shelves
             print "\n".join(shelf.items_on_shelf) # fetches list of books from Shelf instance, formats & prints to newline
     
     def addBook(self, title, shelf):
         shelf.items_on_shelf.append(title) # adds book to a specified shelf instance
         shelf.items_on_shelf.sort() # re-alphabetizes list
-        print str(title), "has been added to the Library."
+        print str("'"+title+"'"), "has been added to the Library."
     
     def removeBook(self, title, shelf):
         shelf.items_on_shelf.remove(title) # removes Book instance from specified Shelf instance
-        print title, "has been removed from the Library."
+        print str("'"+title+"'"), "has been removed from the Library."
 
 
 class Shelf(object):
     def __init__(self, genre):
         self.genre = genre
         self.items_on_shelf = []    # keeps list of book titles for each shelf instance
+        
+    def listBooks(self):
+        print self.genre, "Shelf:", ", ".join(self.items_on_shelf) # formats and prints list for shelf instance
+    
+    def countBooks(self):
+        print self.genre, "Shelf contains", str(len(self.items_on_shelf)), "books."
 
 
 class Book(object):
@@ -55,9 +62,9 @@ class Book(object):
 # CREATE SOME OBJECTS
 my_library = Library()
 
-programming = Shelf("Programming Shelf")
-biology = Shelf("Biology Shelf")
-fiction = Shelf("Fiction Shelf")
+programming = Shelf("Programming")
+biology = Shelf("Biology")
+fiction = Shelf("Fiction")
 
 book1 = Book("Crime and Punishment")
 book2 = Book("Secret World of Slugs and Snails")
@@ -79,19 +86,20 @@ book5.addBook(fiction)
 print "\n" # formatting
 
 # PRINT SHELF CONTENTS
-print "Biology Shelf:", ", ".join(biology.items_on_shelf)
-print "Programming Shelf:", ", ".join(programming.items_on_shelf)
-print "Fiction Shelf:", ", ".join(fiction.items_on_shelf)
-print programming.genre, "contains this many books:", str(len(programming.items_on_shelf))
+
+biology.listBooks()
+fiction.listBooks()
+programming.listBooks()
+print "\n"
+fiction.countBooks()
 
 # REMOVE BOOKS FROM LIBRARY
-print "\n" # formatting
+print "\n"
 book4.removeBook(programming)
 
 # PRINT LIBRARY CONTENTS
-print "\n" # formatting
-print "The Library contains ..."
+print "\n"
 my_library.listBooks()
 
-print "\n \n \n \n"
-print "end of program" # reach program end without crashing
+print "\n \n \n"
+print "end of program" # i like to congratulate myself for not crashing the program
